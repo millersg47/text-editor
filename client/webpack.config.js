@@ -21,9 +21,25 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "Webpack Plugin",
+        title: "Text Editor",
       }),
       new GenerateSW(),
+      new WebpackPwaManifest({
+        name: "TextEditor",
+        short_name: "Text",
+        description: "Enter, update and store text.",
+        background_color: "#2EC4B6",
+        theme_color: "#011627",
+        start_url: "/",
+        publicPath: "/",
+        icons: [
+          {
+            src: path.resolve("/images/logo.png"),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join("images", "icons"),
+          },
+        ],
+      }),
     ],
 
     module: {

@@ -25,9 +25,9 @@ module.exports = () => {
       }),
       new GenerateSW(),
       new WebpackPwaManifest({
-        name: "TextEditor",
-        short_name: "Text",
-        description: "Enter, update and store text.",
+        name: "Just Another Text Editor",
+        short_name: "JATE",
+        description: "Takes notes with JavaScript syntax highlighting!",
         background_color: "#2EC4B6",
         theme_color: "#011627",
         start_url: "/",

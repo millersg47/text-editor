@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
 const { InjectManifest } = require("workbox-webpack-plugin");
-const GenerateSW = require("workbox-webpack-plugin").GenerateSW;
 const path = require("path");
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
@@ -21,10 +20,16 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "Text Editor",
+        title: "JATE",
       }),
-      new GenerateSW(),
+      new InjectManifest({
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js",
+      }),
+
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: "Just Another Text Editor",
         short_name: "JATE",
         description: "Takes notes with JavaScript syntax highlighting!",
@@ -34,7 +39,7 @@ module.exports = () => {
         publicPath: "/",
         icons: [
           {
-            src: path.resolve("/images/logo.png"),
+            src: path.resolve("src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join("images", "icons"),
           },
@@ -55,6 +60,10 @@ module.exports = () => {
             loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
             },
           },
         },

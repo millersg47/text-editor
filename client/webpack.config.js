@@ -18,15 +18,18 @@ module.exports = () => {
       path: path.resolve(__dirname, "dist"),
     },
     plugins: [
+      //creates html file for bundle
       new HtmlWebpackPlugin({
         template: "./index.html",
         title: "JATE",
       }),
+      //injects custom sw
       new InjectManifest({
         swSrc: "./src-sw.js",
         swDest: "src-sw.js",
       }),
 
+      //creates manifest
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,

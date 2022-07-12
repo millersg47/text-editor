@@ -21,7 +21,7 @@ module.exports = () => {
       //creates html file for bundle
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "JATE",
+        title: "J.A.T.E.",
       }),
       //injects custom sw
       new InjectManifest({

@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Tabel of Countents
+## Table of Contents
 
 - [Description](#description)
 - [Installation](#installation)
